@@ -5,12 +5,14 @@ public class BookRequestDTO {
     private Long authorId;
     private int pages;
     private String isbn;
+    private Long price;
 
-    public BookRequestDTO(String name, Long authorId, int pages, String isbn) {
+    public BookRequestDTO(String name, Long authorId, int pages, String isbn, Long price) {
         this.name = name;
         this.authorId = authorId;
         this.pages = pages;
         this.isbn = isbn;
+        this.price = price;
     }
 
     public String getName() {
@@ -27,5 +29,9 @@ public class BookRequestDTO {
 
     public String getIsbn() {
         return isbn;
+    }
+
+    public Long getPrice() {
+        return price;
     }
 }

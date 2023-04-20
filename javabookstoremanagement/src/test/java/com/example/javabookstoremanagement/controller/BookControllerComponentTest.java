@@ -38,8 +38,8 @@ class BookControllerComponentTest {
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .json("{\"name\":\"Hamlet\"," +
-                                "\"author\":{\"name\":\"William Shakespeare\",\"id\":null}" +
-                                ",\"pages\":320,\"isbn\":\"978-8467033380\",\"id\":null}"))
-                .andExpect(jsonPath("$.*", hasSize(5)));
+                                "\"author\":{\"name\":\"William Shakespeare\"}" +
+                                ",\"pages\":320,\"isbn\":\"978-8467033380\"}"))
+                .andExpect(jsonPath("$.*", hasSize(6)));
     }
 }

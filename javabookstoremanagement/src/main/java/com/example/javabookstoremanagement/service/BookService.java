@@ -23,6 +23,7 @@ public class BookService {
                 .withPages(bookRequest.getPages())
                 .withName(bookRequest.getName())
                 .withIsbn(bookRequest.getIsbn())
+                .withPrice(bookRequest.getPrice())
                 .build();
         bookRepository.addBook(book);
     }

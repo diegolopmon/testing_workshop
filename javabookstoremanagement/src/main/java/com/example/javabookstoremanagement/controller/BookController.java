@@ -45,6 +45,7 @@ public class BookController {
                 .withIsbn(bookRequestDTO.getIsbn())
                 .withName(bookRequestDTO.getName())
                 .withPages(bookRequestDTO.getPages())
+                .withPrice(bookRequestDTO.getPrice())
                 .build();
     }
 

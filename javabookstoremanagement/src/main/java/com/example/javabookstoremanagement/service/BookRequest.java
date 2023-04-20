@@ -5,6 +5,7 @@ public class BookRequest {
     protected Long authorId;
     protected int pages;
     protected String isbn;
+    private long price;
 
     public String getName() {
         return name;
@@ -21,15 +22,24 @@ public class BookRequest {
     public String getIsbn() {
         return isbn;
     }
+    public long getPrice() {
+        return price;
+    }
 
     private BookRequest(String name,
                         Long authorId,
                         int pages,
-                        String isbn) {
+                        String isbn, Long price) {
         this.name = name;
         this.authorId = authorId;
         this.pages = pages;
         this.isbn = isbn;
+    }
+
+
+
+    public void setPrice(long price) {
+        this.price = price;
     }
 
     public static final class Builder {
@@ -38,37 +48,43 @@ public class BookRequest {
         private Long authorId;
         private int pages;
         private String isbn;
+        private Long price;
 
         private Builder() {
         }
 
-        public static BookRequest.Builder aBookRequest() {
-            return new BookRequest.Builder();
+        public static Builder aBookRequest() {
+            return new Builder();
         }
 
 
-        public BookRequest.Builder withName(String name) {
+        public Builder withName(String name) {
             this.name = name;
             return this;
         }
 
-        public BookRequest.Builder withAuthorId(Long authorId) {
+        public Builder withAuthorId(Long authorId) {
             this.authorId = authorId;
             return this;
         }
 
-        public BookRequest.Builder withPages(int pages) {
+        public Builder withPages(int pages) {
             this.pages = pages;
             return this;
         }
 
-        public BookRequest.Builder withIsbn(String isbn) {
+        public Builder withIsbn(String isbn) {
             this.isbn = isbn;
             return this;
         }
 
+        public Builder withPrice(Long price) {
+            this.price = price;
+            return this;
+        }
+
         public BookRequest build() {
-            return new BookRequest(name, authorId, pages, isbn);
+            return new BookRequest(name, authorId, pages, isbn, price);
         }
     }
 }

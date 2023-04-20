@@ -1,14 +1,12 @@
 package com.example.javabookstoremanagement.controller;
 
 import com.example.javabookstore.domain.book.Book;
-import com.example.javabookstoremanagement.service.BookService;
 import com.example.javabookstoremanagement.IntegrationTest;
 import com.example.javabookstoremanagement.utils.BookMother;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,13 +25,13 @@ class BookControllerIntegrationTest extends IntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @SpyBean
-    private BookService bookService;
-
     private BookMother bookMother = new BookMother();
 
     @Test
-    @Sql({"/db/fixtures/test_books_schema.sql"})
+    @Sql({
+            "/db/fixtures/clean_schemas.sql",
+            "/db/fixtures/test_books_schema.sql"
+    })
     void givenBookControllerThenReturnHamletWhenGetBooks() throws Exception {
         Book hamlet = bookMother.getHamlet();
         String isbn = hamlet.getIsbn();
@@ -47,7 +45,10 @@ class BookControllerIntegrationTest extends IntegrationTest {
     }
 
     @Test
-    @Sql({"/db/fixtures/test_books_schema.sql"})
+    @Sql({
+            "/db/fixtures/clean_schemas.sql",
+            "/db/fixtures/test_books_schema.sql"
+    })
     void givenBookControllerThenAddRomeoAndJulietBookWhenAddBook() throws Exception {
         String addBookRequest = readFileToString("request/add-book-request.json");
 
